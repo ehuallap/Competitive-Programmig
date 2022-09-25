@@ -29,6 +29,7 @@ typedef vector<pii> vpii;
 #define NUMLINKS 10
 
 void solution() {
+    //ofstream out("out.txt");
     int higRel =- 1;
     int numCases;
     vs relevantLinks;
