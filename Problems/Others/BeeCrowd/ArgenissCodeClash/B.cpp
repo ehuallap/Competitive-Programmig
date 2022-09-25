@@ -1,31 +1,31 @@
+#include <cmath>
+#include <climits>
+#include <queue>
+#include <map>
+#include <cstdlib>
+#include <fstream>
+#include <iomanip>
 #include <iostream>
+#include <stack>
 #include <algorithm>
+#include <cstring>
 #include <vector>
-#include <math.h>
-
-#define ll long long
-#define pb push_back
-#define mp make_pair
-#define pii pair<int, int>
-#define F first
-#define S second
-#define pll pair<ll, ll>
-#define vb vector<bool>
-#define vi vector<int>
-#define vll vector<ll>
-#define vpii vector<pii>
-#define vpll vector<pll>
-#define vvi vector<vi>
 
 using namespace std;
 
-ostream& operator<<(ostream& os, const vi& v) {
-    for (int i = 0; i < v.size(); i++) {
-        os << v[i];
-        i != v.size() - 1 ? os << " " : os << endl;
-    }
-    return os;
-}
+#define max(a,b) (a<b?b:a)
+#define F first
+#define S second
+#define PB push_back
+#define MP make_pair
+#define SQ(x) (x)*(x)
+#define loop(i,v,n) for(int i=v;i<n;i++)
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<bool> vb;
+typedef pair<int,int> pii;
+typedef vector<pii> vpii;
 
 int nextPosI(int numLogs, int numPos, int dir) {
     int newPos = numPos + dir;
@@ -33,42 +33,45 @@ int nextPosI(int numLogs, int numPos, int dir) {
     return newPos % numLogs;
 }
 
-int main() {
-    int numLogs, numIndians;
-    //cin >> numLogs >> numIndians;
-    //vi indians(numIndians);
-    //vi dirs(numIndians);
-    /*for (int i = 0; i < numIndians; i++)
-        cin >> indians[i] >> dirs[i];
-    */
-    vi indians = {2, 3, 5, 6};
-    vi dirs = {1, -1, -1, -1};
+void solution() {
+    int numLogs, numIndi;
+    cin >> numLogs >> numIndi;
+    
+    vb posIndi;
+    vi dirIndi;
 
-    numLogs = 6;
-    numIndians = 4;
-    int numIterations = 1;
+    posIndi.reserve(numLogs);
+    posIndi.resize(numLogs, false);
+    dirIndi.reserve(numLogs);
+    dirIndi.resize(numLogs, 0);
 
-    vi original = indians;
-    cout << indians << endl;
-    cout << dirs << endl;
-    for(int k = 0; k<numIterations; k++) {
-        for(int i=0; i<numIndians; i++) {
-            int nextPos = nextPosI(numLogs, indians[i]-1, dirs[i]);
-            if (abs(indians[i]-indians[nextPos]) == 1) {
-                if (dirs[i] != dirs[nextPos]) {
-                    dirs[i] *= -1;
-                    dirs[nextPos] *= -1;
-                    break;
-                } else {
-                    indians[i] = nextPos+1;
-                    indians[nextPos] = nextPosI(numLogs, nextPos, dirs[nextPos])+1;
-                }
-                i += 1;
+    loop(i, 0, numIndi) {
+        int pos; cin >> pos;
+        posIndi[pos-1] = true; cin >> dirIndi[pos-1];
+    }
+    /*loop(i, 0, numLogs)
+        cout << posIndi[i].F << " " << posIndi[i].S << endl;*/
+    vb auxPosIndi = posIndi;
+    
+    loop(i, 0, numLogs) {
+        if (!posIndi[i]) continue;
+        int sigPos = nextPosI(numLogs, i, dirIndi[i]);
+        if (dirIndi[sigPos]*(-1) == dirIndi[i]) {
+
+        } else {
+            if (dirIndi[sigPos] == 0) {
+                posIndi[i] = false; posIndi[sigPos] = true;
+                dirIndi[sigPos] = dirIndi[i]; dirIndi[i] = 0;
+                i++;
             } else {
-                indians[i] = nextPos+1;
+                posIndi[i] = false; dirIndi[i] = 0;
+                posIndi[nextPosI(numLogs, sigPos, dirIndi[sigPos])] = true;
             }
         }
-        cout << indians << endl;
-        cout << dirs << endl;
     }
+}
+
+int main() {
+    solution();
+    return 0;
 }
