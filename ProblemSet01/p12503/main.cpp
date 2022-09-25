@@ -28,6 +28,7 @@ typedef pair<int,int> pii;
 typedef vector<pii> vpii;
 
 void solution() {
+    //ofstream out("out.txt");
     int numT, numN;
     vc instructions;
     cin >> numT;
