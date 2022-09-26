@@ -30,24 +30,19 @@ typedef vector<pii> vpii;
 void solution() {
     //ofstream out("out.txt", ios::app);
     int numParti, numBudg, numHote, numWeeks;
-    while (scanf("%i %i %i %i", &numParti, &numBudg, &numHote, &numWeeks)) {
-        bool canStay = true;
-        int minTotalCost = INT_MAX;
+    while (scanf("%i %i %i %i", &numParti, &numBudg, &numHote, &numWeeks) != EOF) {
+        int minTotalCost = numBudg+1;
         loop(i, 0, numHote) {
-            canStay = true;
             int costPers;
             scanf("%i", &costPers);
-            int numBeds;
             loop(j, 0, numWeeks) {
+                int numBeds;
                 scanf("%i", &numBeds);
-                if (!canStay) continue;
-                if (numBeds < numParti) canStay = false;
-            }
-            if (canStay)
-                if (costPers*numParti < minTotalCost)
+                if (numBeds >= numParti && costPers*numParti <= minTotalCost)
                     minTotalCost = costPers*numParti;
+            }                    
         }
-        minTotalCost != INT_MAX ? printf("%i\n", minTotalCost) : printf("%s\n", "stay home");
+        minTotalCost <= numBudg ? printf("%i\n", minTotalCost) : printf("%s\n", "stay home");
     }
 }
 
