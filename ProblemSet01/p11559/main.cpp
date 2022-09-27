@@ -40,7 +40,7 @@ void solution() {
                 scanf("%i", &numBeds);
                 if (numBeds >= numParti && costPers*numParti <= minTotalCost)
                     minTotalCost = costPers*numParti;
-            }                    
+            }
         }
         minTotalCost <= numBudg ? printf("%i\n", minTotalCost) : printf("%s\n", "stay home");
     }

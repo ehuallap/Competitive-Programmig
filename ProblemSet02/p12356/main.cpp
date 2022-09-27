@@ -24,12 +24,29 @@ using namespace std;
 
 typedef long long ll;
 typedef vector<int> vi;
+typedef vector<int> vb;
 typedef pair<int,int> pii;
 typedef vector<pii> vpii;
-typedef vector<int> vb;
 
 void solution() {
     //ofstream out("out.txt");
+    int numS, numB;
+    vb alive;
+    while(1){
+        scanf("%i %i", &numS, &numB);
+        if (numS == 0 && numB == 0) {
+            printf("%c", '-');
+            return;
+        }
+        alive.reserve(numS); alive.resize(numS, true);
+        int origI = 1, origF = numS;
+        loop(i, 0, numB) {
+            int posI, posF;
+            scanf("%i %i", &posI, &posF);
+            if (posI <= origI)
+            if (posF <= origF) 
+        }
+    }
 }
 
 int main() {
