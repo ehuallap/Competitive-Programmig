@@ -21,13 +21,6 @@
 #define loop(i,v,n) for(int i=v;i<n;i++)
 #define print(i,V) for(auto &i : V) cout << i << endl;
 
-#define x+ 180
-#define x- -180
-#define y+ 90
-#define y- -90
-#define z+ 45
-#define z- -45
-
 using namespace std;
 
 typedef long long ll;
@@ -38,33 +31,27 @@ typedef vector<pii> vpii;
 void solution() {
     //ofstream out("out.txt");
     int wireL;
-    scanf("%i", &wireL);
-    int lastPart = 180;
-    loop(i, 0, wireL-1) {
-        char dir[2];
-        scanf("%s", dir);
-        switch (dir[0]) {
-            case 'x':
-                if (dir[1] == '+')
-                    lastPart -= 180;
-                else
-                    lastPart += 180;
-                break;
-            case 'y':
-                if (dir[1] == '+')
-                    lastPart -= 90;
-                else
-                    lastPart += 90;
-                break;
-            case 'z':
-                if (dir[1] == '+')
-                    lastPart -= 45;
-                else
-                    lastPart += 45;
-                break;
+    char dir[3];
+
+    while (true) {
+        scanf("%i", &wireL);
+        if (wireL == 0) break;
+        wireL--;
+        int sign = 1;
+        char axis = 'x';
+
+        loop(i, 0, wireL) {
+            scanf("%s", &dir);
+            if (dir[0] == 'N') continue;
+            if ((axis == 'x' && dir[0] == '-') || (axis == 'y' && dir[0] == '+' && dir[1] == 'y') || (axis == 'z' && dir[0] == '+' && dir[1] == 'z'))
+                sign *= -1;
+            if (axis == 'x')
+                axis = dir[1];
+            else if ((axis == 'z' && dir[1] == 'z') || (axis == 'y' && dir[1] == 'y'))
+                axis = 'x';
         }
+        printf("%c%c\n", sign == 1 ? '+' : '-', axis);
     }
-    
 }
 
 int main() {
