@@ -12,21 +12,22 @@
 #include <algorithm>
 #include <cstring>
 
-#define max(a,b) (a<b?b:a)
 #define F first
 #define S second
 #define PB push_back
 #define MP make_pair
 #define SQ(x) (x)*(x)
 #define loop(i,v,n) for(int i=v;i<n;i++)
-#define print(i,V) for(auto &i : V) cout << i << endl;
+#define LSOne(i) (i&-(i))
+
 using namespace std;
 
-typedef long long ll;
+typedef long long int ll;
 typedef vector<int> vi;
 typedef pair<int,int> pii;
 typedef vector<pii> vpii;
-typedef vector<int> vb;
+typedef vector<bool> vb;
+typedef vector<ll> vll;
 
 void solution() {
     //ofstream out("out.txt");
@@ -34,7 +35,8 @@ void solution() {
 
 int main() {
     ios::sync_with_stdio(false);
-    cin.tie(NULL); cout.tie(NULL);
-    solution();
+    cin.tie(NULL);
+    cout.tie(NULL);
+    //solution();
     return 0;
 }
