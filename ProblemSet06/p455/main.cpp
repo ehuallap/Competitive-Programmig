@@ -31,9 +31,6 @@ void KMPgetPreSufTable() {
     ++i; ++j;
     PreSufTable[i] = j;
   }
-  for(auto i : PreSufTable)
-    cout << i << " ";
-  cout << endl;
 }
 
 int KMPSearch(int &prev, int size, bool &answer) {
@@ -77,12 +74,6 @@ int main() {
   ios::sync_with_stdio(false);
   cin.tie(NULL);
   cout.tie(NULL);
-  T = "abaaabaabaa";
-  SP = "aabaa";
-  n = T.size();
-  m = SP.size();
-  KMPgetPreSufTable();
-  /*
   int numCases; cin >> numCases;
   while(numCases--) {
     cin >> T;
@@ -90,6 +81,6 @@ int main() {
     solution();
     if (numCases > 0)
       cout << endl;
-  }*/
+  }
   return 0;
 }
