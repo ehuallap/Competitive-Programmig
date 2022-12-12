@@ -1,13 +1,3 @@
-6
+1
 
-abcdefghijk
-
-abcdabcd
-
-abababababababbababababab
-
-amanamanamanaman
-
-bbabb
-
-aabaabaa
+aabaaaba

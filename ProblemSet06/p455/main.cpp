@@ -55,12 +55,14 @@ int KMPSearch(int &prev, int size, bool &answer) {
 void solution() {
   int prev;
   bool answer;
+  SP = T;
+  n = T.size();
+  m = SP.size();
+  KMPgetPreSufTable();
   loop(size, 1, T.size()+1) {
     answer = true;
     prev = 0-size;
-    SP = T.substr(0, size);
-    m = SP.size();
-    KMPgetPreSufTable();
+    m = size;
     int freq = KMPSearch(prev,size,answer);
     if (freq*size == n && answer) {
       //cout << T << " " << SP << endl;
@@ -77,7 +79,6 @@ int main() {
   int numCases; cin >> numCases;
   while(numCases--) {
     cin >> T;
-    n = T.size();
     solution();
     if (numCases > 0)
       cout << endl;
